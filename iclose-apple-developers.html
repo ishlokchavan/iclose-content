@@ -1,0 +1,1714 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>iClose for Educators — Two paths. Built for both.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
+
+    :root {
+      --black: #000000;
+      --dark: #1D1D1F;
+      --dark2: #2C2C2E;
+      --dark3: #1A1A1C;
+      --light: #F5F5F7;
+      --light2: #FAFAFC;
+      --white: #FFFFFF;
+      --text: #F5F5F7;
+      --text-muted: #86868B;
+      --text-dim: #6E6E73;
+      --text-on-light: #1D1D1F;
+      --text-on-light-muted: #6E6E73;
+      --blue: #2997FF;
+      --blue-hover: #0090FF;
+      --blue-deep: #0071E3;
+      --border: rgba(255, 255, 255, 0.14);
+      --border-light: #D2D2D7;
+      --border-light-soft: #E5E5EA;
+      --r: 980px;
+      --rl: 18px;
+      --sys: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", "Inter", system-ui, sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale
+    }
+
+    body {
+      font-family: var(--sys);
+      background: var(--black);
+      color: var(--text);
+      font-size: 17px;
+      line-height: 1.5;
+      font-weight: 400;
+      letter-spacing: -0.005em;
+      overflow-x: hidden
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 max(22px, calc((100vw - 1024px) / 2));
+      background: rgba(0, 0, 0, 0.72);
+      backdrop-filter: saturate(180%) blur(20px);
+      -webkit-backdrop-filter: saturate(180%) blur(20px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08)
+    }
+
+    .logo {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: -0.02em
+    }
+
+    .logo span {
+      font-weight: 400;
+      color: var(--text-muted)
+    }
+
+    .pro-tag {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--blue);
+      background: rgba(41, 151, 255, 0.14);
+      padding: 2px 8px;
+      border-radius: 980px;
+      margin-left: 8px;
+      letter-spacing: -0.005em;
+      vertical-align: 2px
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      list-style: none
+    }
+
+    .nav-links a {
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--text);
+      text-decoration: none;
+      opacity: 0.86;
+      transition: opacity 0.2s
+    }
+
+    .nav-links a:hover {
+      opacity: 1
+    }
+
+    .nav-pill {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 5px 11px;
+      border-radius: 980px;
+      font-size: 12px !important;
+      opacity: 1 !important;
+      transition: background 0.2s !important
+    }
+
+    .nav-pill:hover {
+      background: rgba(255, 255, 255, 0.16)
+    }
+
+    .nav-cta {
+      background: var(--blue) !important;
+      color: #fff !important;
+      padding: 5px 12px;
+      border-radius: 980px;
+      font-size: 12px !important;
+      font-weight: 500 !important;
+      opacity: 1 !important;
+      transition: background 0.2s !important
+    }
+
+    .nav-cta:hover {
+      background: var(--blue-hover) !important
+    }
+
+    /* HERO */
+    .hero {
+      padding: 120px 22px 80px;
+      text-align: center;
+      background: var(--black);
+      position: relative;
+      overflow: hidden
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -30%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80%;
+      height: 80%;
+      background: radial-gradient(ellipse at center, rgba(41, 151, 255, 0.08) 0%, transparent 60%);
+      pointer-events: none
+    }
+
+    .eyebrow {
+      font-size: 21px;
+      font-weight: 600;
+      color: var(--blue);
+      margin-bottom: 6px;
+      letter-spacing: -0.022em;
+      position: relative
+    }
+
+    .hero h1 {
+      font-size: clamp(48px, 7vw, 84px);
+      font-weight: 600;
+      line-height: 1.04;
+      letter-spacing: -0.015em;
+      color: var(--text);
+      margin: 0 auto 18px;
+      max-width: 960px;
+      position: relative
+    }
+
+    .hero h1 .muted {
+      color: var(--text-muted)
+    }
+
+    .hero-sub {
+      font-size: clamp(19px, 2vw, 24px);
+      font-weight: 400;
+      line-height: 1.4;
+      color: var(--text);
+      max-width: 720px;
+      margin: 0 auto 30px;
+      letter-spacing: -0.012em;
+      position: relative
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 22px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 14px;
+      position: relative
+    }
+
+    .btn-blue {
+      background: var(--blue);
+      color: #fff;
+      padding: 12px 22px;
+      border-radius: var(--r);
+      font-size: 17px;
+      font-weight: 400;
+      text-decoration: none;
+      display: inline-block;
+      transition: background 0.2s;
+      border: none;
+      cursor: pointer;
+      letter-spacing: -0.012em;
+      font-family: inherit;
+      line-height: 1.2
+    }
+
+    .btn-blue:hover {
+      background: var(--blue-hover)
+    }
+
+    .btn-link {
+      color: var(--blue);
+      font-size: 17px;
+      font-weight: 400;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 2px;
+      transition: gap 0.2s;
+      letter-spacing: -0.012em
+    }
+
+    .btn-link:hover {
+      gap: 6px
+    }
+
+    .btn-link::after {
+      content: '›';
+      font-size: 20px;
+      margin-top: -2px
+    }
+
+    /* HERO TWO-PATH CARD */
+    .hero-paths {
+      margin: 60px auto 0;
+      max-width: 1080px;
+      padding: 0 22px;
+      position: relative
+    }
+
+    .paths-card {
+      background: linear-gradient(180deg, var(--dark3) 0%, var(--dark) 100%);
+      border-radius: 24px;
+      padding: 40px;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 32px;
+      border: 1px solid var(--border);
+      align-items: center;
+      text-align: left
+    }
+
+    .path-col {
+      padding: 8px 0
+    }
+
+    .path-num {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--blue);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 14px
+    }
+
+    .path-col h3 {
+      font-size: 32px;
+      font-weight: 600;
+      color: var(--text);
+      letter-spacing: -0.015em;
+      line-height: 1.1;
+      margin-bottom: 12px
+    }
+
+    .path-col p {
+      font-size: 15px;
+      color: var(--text-muted);
+      line-height: 1.5;
+      letter-spacing: -0.005em;
+      margin-bottom: 18px
+    }
+
+    .path-outcome {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text);
+      letter-spacing: -0.005em;
+      display: flex;
+      align-items: center;
+      gap: 8px
+    }
+
+    .path-outcome::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      background: var(--blue);
+      border-radius: 50%
+    }
+
+    .path-divider {
+      width: 1px;
+      align-self: stretch;
+      background: var(--border);
+      position: relative
+    }
+
+    .path-divider::after {
+      content: 'OR';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: var(--dark);
+      padding: 4px 10px;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-dim);
+      letter-spacing: 0.1em;
+      border-radius: 980px;
+      border: 1px solid var(--border)
+    }
+
+    /* SECTIONS */
+    section {
+      padding: 120px 22px
+    }
+
+    .wrap {
+      max-width: 980px;
+      margin: 0 auto
+    }
+
+    .wrap-wide {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 22px
+    }
+
+    .s-eyebrow {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--blue);
+      text-align: center;
+      margin-bottom: 6px;
+      letter-spacing: -0.012em
+    }
+
+    .s-eyebrow.light {
+      color: var(--blue-deep)
+    }
+
+    h2 {
+      font-size: clamp(36px, 5vw, 60px);
+      font-weight: 600;
+      line-height: 1.06;
+      letter-spacing: -0.015em;
+      color: var(--text);
+      text-align: center;
+      margin-bottom: 18px
+    }
+
+    h2 .muted {
+      color: var(--text-muted)
+    }
+
+    h2.dark-text {
+      color: var(--text-on-light)
+    }
+
+    h2.dark-text .muted {
+      color: var(--text-on-light-muted)
+    }
+
+    .s-sub {
+      font-size: clamp(18px, 1.8vw, 22px);
+      font-weight: 400;
+      line-height: 1.45;
+      color: var(--text-muted);
+      text-align: center;
+      max-width: 720px;
+      margin: 0 auto 60px;
+      letter-spacing: -0.012em
+    }
+
+    .s-sub.dark-text {
+      color: var(--text-on-light-muted)
+    }
+
+    /* SPLIT INTRO */
+    .split-intro {
+      background: var(--black);
+      padding: 80px 22px 100px;
+      text-align: center
+    }
+
+    .split-intro-inner {
+      max-width: 920px;
+      margin: 0 auto
+    }
+
+    .split-intro h2 {
+      font-size: clamp(40px, 6vw, 68px);
+      margin-bottom: 24px
+    }
+
+    .split-intro-sub {
+      font-size: 21px;
+      color: var(--text-muted);
+      line-height: 1.45;
+      letter-spacing: -0.012em;
+      max-width: 680px;
+      margin: 0 auto
+    }
+
+    /* ============================
+   PATH 01 — AREA SPECIALISTS
+   (light background)
+   ============================ */
+    .path-section {
+      padding: 140px 22px;
+      position: relative
+    }
+
+    .path-section.light {
+      background: var(--light);
+      color: var(--text-on-light)
+    }
+
+    .path-section.dark {
+      background: var(--black);
+      color: var(--text)
+    }
+
+    .path-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--white);
+      padding: 8px 16px;
+      border-radius: 980px;
+      border: 1px solid var(--border-light-soft);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-on-light);
+      letter-spacing: -0.005em;
+      margin-bottom: 24px
+    }
+
+    .path-badge.dark {
+      background: var(--dark);
+      border-color: var(--border);
+      color: var(--text)
+    }
+
+    .path-badge-num {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--blue-deep);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding-right: 10px;
+      border-right: 1px solid var(--border-light-soft)
+    }
+
+    .path-badge.dark .path-badge-num {
+      color: var(--blue);
+      border-right-color: var(--border)
+    }
+
+    .path-header {
+      text-align: center;
+      max-width: 920px;
+      margin: 0 auto 80px
+    }
+
+    .path-header.left {
+      text-align: left;
+      margin-left: 0;
+      margin-right: auto
+    }
+
+    .path-header h2 {
+      margin-bottom: 20px
+    }
+
+    .path-header p {
+      font-size: 21px;
+      color: var(--text-on-light-muted);
+      line-height: 1.45;
+      letter-spacing: -0.012em;
+      max-width: 720px;
+      margin: 0 auto
+    }
+
+    .path-section.dark .path-header p {
+      color: var(--text-muted)
+    }
+
+    /* PAIN POINTS */
+    .pain-section-inline {
+      max-width: 1200px;
+      margin: 0 auto 80px
+    }
+
+    .pain-section-inline .section-label {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--blue-deep);
+      text-align: center;
+      margin-bottom: 18px;
+      letter-spacing: -0.012em
+    }
+
+    .path-section.dark .pain-section-inline .section-label {
+      color: var(--blue)
+    }
+
+    .pain-section-inline h3 {
+      text-align: center;
+      font-size: clamp(28px, 3.5vw, 40px);
+      font-weight: 600;
+      color: var(--text-on-light);
+      letter-spacing: -0.015em;
+      margin-bottom: 48px;
+      line-height: 1.15
+    }
+
+    .path-section.dark .pain-section-inline h3 {
+      color: var(--text)
+    }
+
+    .pain-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px
+    }
+
+    .pain-card {
+      background: var(--white);
+      border-radius: 18px;
+      padding: 32px 28px;
+      transition: transform 0.25s, box-shadow 0.25s
+    }
+
+    .path-section.dark .pain-card {
+      background: var(--dark);
+      border: 1px solid var(--border)
+    }
+
+    .pain-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08)
+    }
+
+    .path-section.dark .pain-card:hover {
+      background: var(--dark2);
+      box-shadow: none
+    }
+
+    .pain-card h4 {
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--text-on-light);
+      letter-spacing: -0.012em;
+      margin-bottom: 10px;
+      line-height: 1.2
+    }
+
+    .path-section.dark .pain-card h4 {
+      color: var(--text)
+    }
+
+    .pain-card p {
+      font-size: 15px;
+      color: var(--text-on-light-muted);
+      line-height: 1.5;
+      letter-spacing: -0.005em
+    }
+
+    .path-section.dark .pain-card p {
+      color: var(--text-muted)
+    }
+
+    /* PERSONAS BLOCK */
+    .personas-block {
+      max-width: 1200px;
+      margin: 0 auto 80px
+    }
+
+    .personas-block .section-label {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--blue-deep);
+      text-align: center;
+      margin-bottom: 18px;
+      letter-spacing: -0.012em
+    }
+
+    .path-section.dark .personas-block .section-label {
+      color: var(--blue)
+    }
+
+    .personas-block h3 {
+      text-align: center;
+      font-size: clamp(28px, 3.5vw, 40px);
+      font-weight: 600;
+      color: var(--text-on-light);
+      letter-spacing: -0.015em;
+      margin-bottom: 48px;
+      line-height: 1.15
+    }
+
+    .path-section.dark .personas-block h3 {
+      color: var(--text)
+    }
+
+    .persona-grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px
+    }
+
+    .persona-card {
+      background: var(--white);
+      border-radius: 18px;
+      padding: 28px 24px;
+      transition: transform 0.25s;
+      border: 1px solid var(--border-light-soft)
+    }
+
+    .path-section.dark .persona-card {
+      background: var(--dark);
+      border-color: var(--border)
+    }
+
+    .persona-card:hover {
+      transform: translateY(-3px)
+    }
+
+    .persona-card-tag {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--blue-deep);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 12px
+    }
+
+    .path-section.dark .persona-card-tag {
+      color: var(--blue)
+    }
+
+    .persona-card h4 {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--text-on-light);
+      letter-spacing: -0.012em;
+      line-height: 1.2;
+      margin-bottom: 10px
+    }
+
+    .path-section.dark .persona-card h4 {
+      color: var(--text)
+    }
+
+    .persona-card p {
+      font-size: 14px;
+      color: var(--text-on-light-muted);
+      line-height: 1.5;
+      letter-spacing: -0.005em
+    }
+
+    .path-section.dark .persona-card p {
+      color: var(--text-muted)
+    }
+
+    /* PILLARS BLOCK */
+    .pillars-block {
+      max-width: 1200px;
+      margin: 0 auto
+    }
+
+    .pillars-block .section-label {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--blue-deep);
+      text-align: center;
+      margin-bottom: 18px;
+      letter-spacing: -0.012em
+    }
+
+    .path-section.dark .pillars-block .section-label {
+      color: var(--blue)
+    }
+
+    .pillars-block h3 {
+      text-align: center;
+      font-size: clamp(28px, 3.5vw, 40px);
+      font-weight: 600;
+      color: var(--text-on-light);
+      letter-spacing: -0.015em;
+      margin-bottom: 48px;
+      line-height: 1.15
+    }
+
+    .path-section.dark .pillars-block h3 {
+      color: var(--text)
+    }
+
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px
+    }
+
+    .pillar-card {
+      background: var(--white);
+      border-radius: 24px;
+      padding: 40px 36px;
+      transition: transform 0.25s, box-shadow 0.25s;
+      display: flex;
+      flex-direction: column
+    }
+
+    .path-section.dark .pillar-card {
+      background: var(--dark);
+      border: 1px solid var(--border)
+    }
+
+    .pillar-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.08)
+    }
+
+    .path-section.dark .pillar-card:hover {
+      background: var(--dark2);
+      box-shadow: none
+    }
+
+    .pillar-num {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--blue-deep);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 14px
+    }
+
+    .path-section.dark .pillar-num {
+      color: var(--blue)
+    }
+
+    .pillar-card h4 {
+      font-size: 28px;
+      font-weight: 600;
+      color: var(--text-on-light);
+      letter-spacing: -0.015em;
+      line-height: 1.1;
+      margin-bottom: 14px
+    }
+
+    .path-section.dark .pillar-card h4 {
+      color: var(--text)
+    }
+
+    .pillar-card p {
+      font-size: 16px;
+      color: var(--text-on-light-muted);
+      line-height: 1.5;
+      letter-spacing: -0.005em;
+      margin-bottom: auto
+    }
+
+    .path-section.dark .pillar-card p {
+      color: var(--text-muted)
+    }
+
+    .pillar-list {
+      list-style: none;
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border-light-soft)
+    }
+
+    .path-section.dark .pillar-list {
+      border-top-color: var(--border)
+    }
+
+    .pillar-list li {
+      font-size: 14px;
+      color: var(--text-on-light);
+      padding: 6px 0;
+      display: flex;
+      gap: 8px;
+      align-items: flex-start;
+      letter-spacing: -0.005em
+    }
+
+    .path-section.dark .pillar-list li {
+      color: var(--text)
+    }
+
+    .pillar-list li::before {
+      content: '';
+      width: 12px;
+      height: 12px;
+      flex-shrink: 0;
+      margin-top: 5px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 14' fill='%230071E3'%3E%3Cpath d='M5.5 11L1 6.5l1.5-1.5L5.5 8l6-6L13 3.5z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-size: contain
+    }
+
+    .path-section.dark .pillar-list li::before {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 14' fill='%232997FF'%3E%3Cpath d='M5.5 11L1 6.5l1.5-1.5L5.5 8l6-6L13 3.5z'/%3E%3C/svg%3E")
+    }
+
+    /* CLOSING STATEMENT */
+    .path-closing {
+      max-width: 780px;
+      margin: 80px auto 0;
+      text-align: center;
+      padding: 48px 32px;
+      background: var(--white);
+      border-radius: 24px;
+      border: 1px solid var(--border-light-soft)
+    }
+
+    .path-section.dark .path-closing {
+      background: var(--dark);
+      border-color: var(--border)
+    }
+
+    .path-closing p {
+      font-size: 24px;
+      font-weight: 600;
+      color: var(--text-on-light);
+      letter-spacing: -0.015em;
+      line-height: 1.3;
+      margin-bottom: 20px
+    }
+
+    .path-section.dark .path-closing p {
+      color: var(--text)
+    }
+
+    .path-closing .btn-link-row {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--blue-deep);
+      font-size: 17px;
+      font-weight: 400;
+      text-decoration: none;
+      letter-spacing: -0.012em;
+      transition: gap 0.2s
+    }
+
+    .path-section.dark .path-closing .btn-link-row {
+      color: var(--blue)
+    }
+
+    .path-closing .btn-link-row:hover {
+      gap: 10px
+    }
+
+    .path-closing .btn-link-row::after {
+      content: '›';
+      font-size: 20px;
+      margin-top: -2px
+    }
+
+    /* SHARED: PRODUCTION */
+    .production-section {
+      background: var(--black);
+      padding: 140px 22px
+    }
+
+    .shared-tag {
+      display: inline-block;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--blue);
+      background: rgba(41, 151, 255, 0.12);
+      padding: 6px 14px;
+      border-radius: 980px;
+      margin-bottom: 20px;
+      letter-spacing: -0.005em
+    }
+
+    .shared-tag-wrap {
+      text-align: center;
+      margin-bottom: 8px
+    }
+
+    .prod-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+      max-width: 1200px;
+      margin: 60px auto 0
+    }
+
+    .prod-copy h3 {
+      font-size: clamp(28px, 3.5vw, 40px);
+      font-weight: 600;
+      color: var(--text);
+      letter-spacing: -0.015em;
+      line-height: 1.15;
+      margin-bottom: 20px
+    }
+
+    .prod-copy p {
+      font-size: 18px;
+      line-height: 1.5;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+      letter-spacing: -0.012em
+    }
+
+    .prod-copy strong {
+      color: var(--text);
+      font-weight: 500
+    }
+
+    .prod-list {
+      display: flex;
+      flex-direction: column
+    }
+
+    .prod-row {
+      padding: 20px 0;
+      border-bottom: 1px solid var(--border);
+      transition: padding-left 0.2s
+    }
+
+    .prod-row:last-child {
+      border-bottom: none
+    }
+
+    .prod-row:hover {
+      padding-left: 8px
+    }
+
+    .prod-row h4 {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--text);
+      letter-spacing: -0.012em;
+      margin-bottom: 6px
+    }
+
+    .prod-row p {
+      font-size: 15px;
+      color: var(--text-muted);
+      line-height: 1.5;
+      letter-spacing: -0.005em
+    }
+
+    /* SHARED: HOW IT WORKS */
+    .how-section {
+      background: var(--light);
+      color: var(--text-on-light);
+      padding: 140px 22px
+    }
+
+    .how-section h2 {
+      color: var(--text-on-light)
+    }
+
+    .how-section h2 .muted {
+      color: var(--text-on-light-muted)
+    }
+
+    .how-section .s-sub {
+      color: var(--text-on-light-muted)
+    }
+
+    .how-steps {
+      max-width: 820px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column
+    }
+
+    .hstep {
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      gap: 32px;
+      padding: 32px 0;
+      border-bottom: 1px solid var(--border-light);
+      transition: padding-left 0.25s
+    }
+
+    .hstep:last-child {
+      border-bottom: none
+    }
+
+    .hstep:hover {
+      padding-left: 8px
+    }
+
+    .hstep-num {
+      font-size: 48px;
+      font-weight: 600;
+      color: var(--text-on-light-muted);
+      letter-spacing: -0.025em;
+      line-height: 1
+    }
+
+    .hstep:hover .hstep-num {
+      color: var(--blue-deep)
+    }
+
+    .hstep h3 {
+      font-size: 24px;
+      font-weight: 600;
+      color: var(--text-on-light);
+      letter-spacing: -0.015em;
+      margin-bottom: 8px
+    }
+
+    .hstep p {
+      font-size: 17px;
+      color: var(--text-on-light-muted);
+      line-height: 1.5;
+      letter-spacing: -0.005em;
+      max-width: 520px
+    }
+
+    /* APPLY */
+    .apply-section {
+      background: var(--black);
+      padding: 140px 22px
+    }
+
+    .apply-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: start;
+      max-width: 1100px;
+      margin: 0 auto
+    }
+
+    .apply-left h2 {
+      text-align: left;
+      font-size: clamp(36px, 4.5vw, 56px)
+    }
+
+    .apply-left p {
+      font-size: 19px;
+      color: var(--text-muted);
+      line-height: 1.5;
+      margin-top: 20px;
+      letter-spacing: -0.012em
+    }
+
+    .apply-note {
+      margin-top: 32px;
+      font-size: 14px;
+      color: var(--text-dim);
+      letter-spacing: -0.005em;
+      padding: 14px 18px;
+      background: var(--dark);
+      border-radius: 12px;
+      border: 1px solid var(--border)
+    }
+
+    .apply-form {
+      background: var(--dark);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 40px 36px
+    }
+
+    .apply-form .role-picker {
+      margin-bottom: 24px
+    }
+
+    .apply-form .role-picker-label {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+      letter-spacing: -0.005em;
+      display: block
+    }
+
+    .role-options {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px
+    }
+
+    .role-option {
+      background: var(--black);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px 16px;
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s;
+      text-align: left
+    }
+
+    .role-option:hover {
+      border-color: var(--text-muted)
+    }
+
+    .role-option.active {
+      border-color: var(--blue);
+      background: rgba(41, 151, 255, 0.08)
+    }
+
+    .role-option-num {
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--blue);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 4px
+    }
+
+    .role-option-name {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text);
+      letter-spacing: -0.005em;
+      line-height: 1.2;
+      margin-bottom: 2px
+    }
+
+    .role-option-desc {
+      font-size: 12px;
+      color: var(--text-muted);
+      letter-spacing: -0.005em
+    }
+
+    .apply-form label {
+      display: block;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+      margin-top: 16px;
+      letter-spacing: -0.005em
+    }
+
+    .apply-form input,
+    .apply-form select,
+    .apply-form textarea {
+      width: 100%;
+      background: var(--black);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 12px 16px;
+      font-family: inherit;
+      font-size: 16px;
+      color: var(--text);
+      outline: none;
+      transition: border-color 0.2s;
+      -webkit-appearance: none;
+      letter-spacing: -0.005em
+    }
+
+    .apply-form input::placeholder,
+    .apply-form textarea::placeholder {
+      color: var(--text-dim)
+    }
+
+    .apply-form input:focus,
+    .apply-form select:focus,
+    .apply-form textarea:focus {
+      border-color: var(--blue)
+    }
+
+    .apply-form textarea {
+      resize: vertical;
+      min-height: 100px;
+      line-height: 1.5
+    }
+
+    .apply-form button {
+      width: 100%;
+      margin-top: 24px;
+      background: var(--blue);
+      color: #fff;
+      padding: 14px;
+      border: none;
+      border-radius: 980px;
+      font-family: inherit;
+      font-size: 17px;
+      font-weight: 400;
+      cursor: pointer;
+      transition: background 0.2s;
+      letter-spacing: -0.012em
+    }
+
+    .apply-form button:hover {
+      background: var(--blue-hover)
+    }
+
+    .apply-note2 {
+      font-size: 13px;
+      color: var(--text-dim);
+      text-align: center;
+      margin-top: 12px;
+      letter-spacing: -0.005em
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--black);
+      padding: 32px 22px;
+      border-top: 1px solid var(--border)
+    }
+
+    .footer-inner {
+      max-width: 980px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px
+    }
+
+    .f-logo {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: -0.012em
+    }
+
+    .f-logo span {
+      font-weight: 400;
+      color: var(--text-muted)
+    }
+
+    .f-links {
+      display: flex;
+      gap: 24px;
+      list-style: none
+    }
+
+    .f-links a {
+      font-size: 13px;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.2s;
+      letter-spacing: -0.005em
+    }
+
+    .f-links a:hover {
+      color: var(--text)
+    }
+
+    .f-copy {
+      font-size: 12px;
+      color: var(--text-dim);
+      letter-spacing: -0.005em
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(16px)
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0)
+      }
+    }
+
+    .hero>* {
+      animation: fadeUp 0.7s ease both
+    }
+
+    .hero .eyebrow {
+      animation-delay: 0.05s
+    }
+
+    .hero h1 {
+      animation-delay: 0.15s
+    }
+
+    .hero-sub {
+      animation-delay: 0.28s
+    }
+
+    .hero-ctas {
+      animation-delay: 0.4s
+    }
+
+    .hero-paths {
+      animation-delay: 0.55s
+    }
+
+    @media(max-width:900px) {
+      nav {
+        padding: 0 16px
+      }
+
+      .nav-links li:not(:last-child):not(:nth-last-child(2)) {
+        display: none
+      }
+
+      .hero {
+        padding: 100px 16px 50px
+      }
+
+      .paths-card {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        padding: 32px 24px
+      }
+
+      .path-divider {
+        display: none
+      }
+
+      section,
+      .path-section,
+      .production-section,
+      .how-section,
+      .apply-section {
+        padding: 80px 16px
+      }
+
+      .split-intro {
+        padding: 60px 16px 70px
+      }
+
+      .pain-grid {
+        grid-template-columns: 1fr
+      }
+
+      .persona-grid-4 {
+        grid-template-columns: 1fr 1fr
+      }
+
+      .pillars-grid {
+        grid-template-columns: 1fr
+      }
+
+      .prod-layout,
+      .apply-layout {
+        grid-template-columns: 1fr;
+        gap: 32px
+      }
+
+      .hstep {
+        grid-template-columns: 60px 1fr;
+        gap: 20px
+      }
+
+      .hstep-num {
+        font-size: 36px
+      }
+
+      .apply-form {
+        padding: 32px 24px
+      }
+
+      .apply-left h2 {
+        text-align: center
+      }
+
+      .role-options {
+        grid-template-columns: 1fr
+      }
+
+      .footer-inner {
+        flex-direction: column;
+        text-align: center
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="iclose-apple-index.html" class="logo">i<span>Close</span>
+      <!-- <span class="pro-tag">Educators</span> -->
+    </a>
+    <ul class="nav-links">
+      <!-- <li><a href="#specialists">Area Specialists</a></li>
+    <li><a href="#managers">Relationship Managers</a></li>
+    <li><a href="#how">How it works</a></li> -->
+      <li><a href="iclose-apple-area-experts.html">For Area Experts</a></li>
+      <li><a href="iclose-apple-index.html" class="nav-pill">For Agents/ Freelancers</a></li>
+      <li><a href="#apply" class="nav-cta">Apply</a></li>
+    </ul>
+  </nav>
+
+
+  <section class="path-section dark" id="managers">
+    <div class="path-header">
+      <!-- <div class="path-badge dark"><span class="path-badge-num">Path 02</span>Relationship Managers</div> -->
+      <h2>Stop cold-calling brokerages.<br><span class="muted">Let educated brokers come to you.</span></h2>
+      <p>For sales and relationship managers working directly with a developer — building a qualified broker network
+        without the cold outreach grind, and turning your developer's content into a 24/7 acquisition engine.</p>
+    </div>
+
+    <!-- PAIN POINTS -->
+    <div class="pain-section-inline">
+      <div class="section-label">Sound familiar?</div>
+      <h3>The reality for most<br>developer RMs today.</h3>
+      <div class="pain-grid">
+        <div class="pain-card">
+          <h4>Cold outreach is broken.</h4>
+          <p>Calling brokerages. Visiting agencies. Hoping someone shows up to your launch event. It's slow, scattered,
+            and nearly impossible to scale.</p>
+        </div>
+        <div class="pain-card">
+          <h4>Every conversation starts from zero.</h4>
+          <p>New brokers know nothing about your developer. You re-explain projects, USPs, and payment plans over and
+            over — to people who may never bring a serious buyer.</p>
+        </div>
+        <div class="pain-card">
+          <h4>Broker quality varies wildly.</h4>
+          <p>You get a mix of serious and casual. Filtering for the ones who'll actually deliver qualified buyers takes
+            time you don't have.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- WHO YOU ARE -->
+    <!-- <div class="personas-block">
+      <div class="section-label">Who you are</div>
+      <h3>The developer RM<br>who wants to scale.</h3>
+      <div class="persona-grid-4" style="grid-template-columns:repeat(2,1fr);max-width:780px;margin:0 auto">
+        <div class="persona-card">
+          <div class="persona-card-tag">01 · Developer-side</div>
+          <h4>The in-house RM.</h4>
+          <p>Working directly inside a developer's team. You handle broker relationships, project education, and deal
+            coordination. You want a network that brings serious buyers — without the agency-by-agency grind.</p>
+        </div>
+        <div class="persona-card">
+          <div class="persona-card-tag">02 · Multi-developer</div>
+          <h4>The senior relationship manager.</h4>
+          <p>Managing multiple developer accounts or representing a developer across territories. You need scalable
+            distribution — one place where every broker can learn about your developer at depth.</p>
+        </div>
+      </div>
+    </div> -->
+
+    <!-- PILLARS -->
+    <div class="pillars-block">
+      <div class="section-label">What iClose does for you</div>
+      <h3>Four pillars built<br>for relationship managers.</h3>
+      <div class="pillars-grid">
+        <div class="pillar-card">
+          <div class="pillar-num">Pillar 01 — Default contact</div>
+          <h4>Become the dedicated RM for your developer.</h4>
+          <p>Every learner-broker on iClose who engages with your developer's content sees you as the named RM contact.
+            You're warm before the first conversation — and you're the obvious first call when they have a buyer.</p>
+          <ul class="pillar-list">
+            <li>One dedicated RM profile per developer</li>
+            <li>Featured across all relevant developer content</li>
+            <li>Direct contact pathway from every learner-broker</li>
+          </ul>
+        </div>
+        <div class="pillar-card">
+          <div class="pillar-num">Pillar 02 — Education library</div>
+          <h4>Your developer, taught once. For everyone.</h4>
+          <p>Background, USPs, project portfolio, payment plans, market positioning — all in one structured library that
+            every broker in the iClose network can access. No more repeating the same conversations agency by agency.
+          </p>
+          <ul class="pillar-list">
+            <li>Full production support — recording to distribution</li>
+            <li>Project-by-project depth, updated as you launch</li>
+            <li>Library searchable by every iClose learner</li>
+          </ul>
+        </div>
+        <div class="pillar-card">
+          <div class="pillar-num">Pillar 03 — Qualified inbound</div>
+          <h4>Brokers who already know your developer.</h4>
+          <p>iClose learners are ambitious professionals who've actively studied your developer's projects. The brokers
+            reaching out are bringing pre-vetted, serious buyers — not casual interest from cold outreach.</p>
+          <ul class="pillar-list">
+            <li>Pre-educated brokers reaching out warm</li>
+            <li>Serious buyers — not tire-kickers</li>
+            <li>Inquiries routed directly to your RM profile</li>
+          </ul>
+        </div>
+        <div class="pillar-card">
+          <div class="pillar-num">Pillar 04 — Autonomous scale</div>
+          <h4>Your network grows without your time.</h4>
+          <p>Your content works in the background. As new learners join iClose and study your developer, your broker
+            network grows automatically. You build a qualified distribution layer without sending a single cold message.
+          </p>
+          <ul class="pillar-list">
+            <li>Network compounds as new learners join</li>
+            <li>Zero outbound effort required to expand</li>
+            <li>Performance compounds over time</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- CLOSING -->
+    <div class="path-closing">
+      <p>Build the broker network your developer deserves —<br>without sending a single cold message.</p>
+      <a href="#apply" class="btn-link-row">Apply as a relationship manager</a>
+    </div>
+  </section>
+
+  <!-- SHARED: PRODUCTION -->
+  <section class="production-section">
+    <div class="shared-tag-wrap">
+      <div class="shared-tag">Shared across both paths</div>
+    </div>
+    <div class="s-eyebrow">The production setup</div>
+    <h2>We built the studio.<br><span class="muted">You bring the knowledge.</span></h2>
+    <p class="s-sub">Whether you're an area specialist or a developer RM — the production infrastructure is identical.
+      Professional. Hands-off for you. Built so the output quality matches the depth of what you know.</p>
+    <div class="prod-layout">
+      <div class="prod-copy">
+        <h3>The barrier to creating authority-grade content used to be massive.</h3>
+        <p>Equipment, editing software, technical know-how, agency relationships, content strategy — most experts never
+          start because the cost of starting is too high.</p>
+        <p>We removed the barrier entirely. <strong>You handle one thing: showing up. We handle everything else — for
+            both Area Specialists and Relationship Managers.</strong></p>
+      </div>
+      <div class="prod-list">
+        <div class="prod-row">
+          <h4>Professional recording.</h4>
+          <p>Full camera, lighting, and audio — production-grade quality that matches your expertise level.</p>
+        </div>
+        <div class="prod-row">
+          <h4>Editing & post-production.</h4>
+          <p>Dedicated editing team turns your sessions into polished, structured content modules.</p>
+        </div>
+        <div class="prod-row">
+          <h4>Curriculum design.</h4>
+          <p>Whether you're teaching an area or a developer's portfolio — we structure it for completion and trust.</p>
+        </div>
+        <div class="prod-row">
+          <h4>Distribution.</h4>
+          <p>Your content is surfaced to the right audience at the right time inside the iClose ecosystem.</p>
+        </div>
+        <div class="prod-row">
+          <h4>Ongoing support.</h4>
+          <p>As your area evolves or your developer launches new projects, we help you add modules continuously.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SHARED: HOW IT WORKS -->
+  <section class="how-section" id="how">
+    <div class="shared-tag-wrap">
+      <div class="shared-tag" style="color:var(--blue-deep);background:rgba(0,113,227,0.1)">Shared across both paths
+      </div>
+    </div>
+    <div class="s-eyebrow light">How it works</div>
+    <h2 class="dark-text">From application to authority.<br><span class="muted">In five steps.</span></h2>
+    <p class="s-sub dark-text">The process is identical whether you're applying as an Area Specialist or a Relationship
+      Manager. A real person is involved at every stage.</p>
+    <div class="how-steps">
+      <div class="hstep">
+        <div class="hstep-num">01</div>
+        <div>
+          <h3>Apply and tell us your path.</h3>
+          <p>Fill in the short application below. Pick your role — Area Specialist or Relationship Manager — and tell us
+            your niche or developer. We review every application personally.</p>
+        </div>
+      </div>
+      <div class="hstep">
+        <div class="hstep-num">02</div>
+        <div>
+          <h3>We scope your curriculum.</h3>
+          <p>A dedicated iClose team member works with you to map content structure — what to cover, how to sequence it,
+            how to make it genuinely useful for your audience.</p>
+        </div>
+      </div>
+      <div class="hstep">
+        <div class="hstep-num">03</div>
+        <div>
+          <h3>You record. We produce.</h3>
+          <p>Schedule sessions with our team. You share knowledge on camera. We handle setup, technical quality,
+            post-production. Zero burden on you.</p>
+        </div>
+      </div>
+      <div class="hstep">
+        <div class="hstep-num">04</div>
+        <div>
+          <h3>Your content goes live.</h3>
+          <p>Your specialist or RM profile and content library go live on the platform. Learners engage. iClose begins
+            routing inquiries, referrals, and qualified brokers your way.</p>
+        </div>
+      </div>
+      <div class="hstep">
+        <div class="hstep-num">05</div>
+        <div>
+          <h3>Revenue and network grow.</h3>
+          <p>Subscription income builds. Deal flow or broker network compounds. Both streams scale without demanding
+            more of your time to maintain them.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- APPLY -->
+  <section class="apply-section" id="apply">
+    <div class="apply-layout">
+      <div class="apply-left">
+        <div class="s-eyebrow" style="text-align:left">Apply to become an educator</div>
+        <h2>Spots are limited.<br><span class="muted">By design.</span></h2>
+        <p>We onboard educators in deliberate batches — one specialist per area, one RM per developer. This keeps the
+          quality of each niche genuinely high and ensures every educator gets real inbound, not a diluted marketplace.
+        </p>
+        <p>Pick your path below. We'll review your application within 48 hours — and a real person will reach out either
+          way.</p>
+        <div class="apply-note">Applications reviewed within 48 hours. No automated responses.</div>
+      </div>
+      <div class="apply-form">
+        <div class="role-picker">
+          <span class="role-picker-label">Which path are you applying for?</span>
+          <div class="role-options">
+            <button type="button" class="role-option active">
+              <div class="role-option-num">Path 01</div>
+              <div class="role-option-name">Area Specialist</div>
+              <div class="role-option-desc">Community, building, or cluster expert</div>
+            </button>
+            <button type="button" class="role-option">
+              <div class="role-option-num">Path 02</div>
+              <div class="role-option-name">Relationship Manager</div>
+              <div class="role-option-desc">Developer-side RM or account manager</div>
+            </button>
+          </div>
+        </div>
+
+        <label>Full name</label>
+        <input type="text" placeholder="e.g. Ahmed Al Rashidi">
+
+        <label>Email address</label>
+        <input type="email" placeholder="your@email.com">
+
+        <label>Your area or developer</label>
+        <input type="text" placeholder="e.g. Downtown Dubai, Emaar Beachfront, Damac Hills, Binghatti...">
+
+        <label>Tell us about your track record</label>
+        <textarea
+          placeholder="How long have you been active in this area or with this developer? What makes your expertise different? What do you want to achieve with iClose?"></textarea>
+
+        <button type="button">Submit application</button>
+        <p class="apply-note2">Spots are limited. We'll follow up within 48 hours.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <a href="iclose-apple-index.html" class="f-logo">i<span>Close</span></a>
+      <ul class="f-links">
+        <li><a href="iclose-apple-index.html">For brokers</a></li>
+        <li><a href="#specialists">Area Specialists</a></li>
+        <li><a href="#managers">Relationship Managers</a></li>
+        <li><a href="#apply">Apply</a></li>
+      </ul>
+      <p class="f-copy">© 2025 iClose. Dubai, UAE.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Simple role picker toggle
+    document.querySelectorAll('.role-option').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.role-option').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+      });
+    });
+  </script>
+
+</body>
+
+</html>
