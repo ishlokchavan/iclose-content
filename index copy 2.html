@@ -1,0 +1,2191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>iClose — Learn from the best. Close more deals.</title>
+  <meta name="description"
+    content="A proptech education platform for UAE real estate. Learn from the top 0.1% of agents and keep up to 100% of your commission.">
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      /* Apple system — locked */
+      --bg: #FFFFFF;
+      --bg-alt: #F5F5F7;
+      --bg-tint: #FAFAFC;
+      --bg-dark: #1D1D1F;
+      --bg-black: #000000;
+      --text: #1D1D1F;
+      --text-muted: #6E6E73;
+      --text-light: #86868B;
+      --text-dim: #A1A1A6;
+      --text-on-dark: #F5F5F7;
+      --text-on-dark-muted: #A1A1A6;
+      --blue: #0071E3;
+      --blue-hover: #0077ED;
+      --blue-bright: #2997FF;
+      --green: #34C759;
+      --border: #D2D2D7;
+      --border-soft: #E5E5EA;
+      --border-dark: rgba(255, 255, 255, 0.14);
+      --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.04), 0 8px 24px rgba(0, 0, 0, 0.06);
+      --shadow-hover: 0 4px 8px rgba(0, 0, 0, 0.06), 0 24px 48px rgba(0, 0, 0, 0.10);
+      --shadow-deep: 0 10px 30px rgba(0, 0, 0, 0.12), 0 30px 80px rgba(0, 0, 0, 0.10);
+      --r-pill: 980px;
+      --r-card: 22px;
+      --r-card-sm: 14px;
+      --sys: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", system-ui, sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      font-family: var(--sys);
+      background: var(--bg);
+      color: var(--text);
+      font-size: 17px;
+      line-height: 1.5;
+      font-weight: 400;
+      letter-spacing: -0.005em;
+      overflow-x: hidden;
+    }
+
+    /* ============================================
+       NAV
+       ============================================ */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 max(22px, calc((100vw - 1024px) / 2));
+      background: rgba(255, 255, 255, 0.72);
+      backdrop-filter: saturate(180%) blur(20px);
+      -webkit-backdrop-filter: saturate(180%) blur(20px);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    }
+
+    .logo {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+
+    .logo span {
+      font-weight: 400;
+      color: var(--text-muted);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--text);
+      text-decoration: none;
+      opacity: 0.88;
+      transition: opacity 0.2s;
+    }
+
+    .nav-links a:hover {
+      opacity: 1;
+    }
+
+    .nav-links a.active {
+      opacity: 1;
+      font-weight: 500;
+    }
+
+    .nav-cta {
+      background: var(--blue) !important;
+      color: #fff !important;
+      padding: 5px 12px;
+      border-radius: var(--r-pill);
+      font-size: 12px !important;
+      font-weight: 500 !important;
+      opacity: 1 !important;
+      transition: background 0.2s !important;
+    }
+
+    .nav-cta:hover {
+      background: var(--blue-hover) !important;
+    }
+
+    /* ============================================
+       HERO — locked copy from user image
+       ============================================ */
+    .hero {
+      padding: 130px 22px 80px;
+      text-align: center;
+      background: var(--bg);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -100px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 1200px;
+      height: 800px;
+      background: radial-gradient(ellipse at center, rgba(0, 113, 227, 0.04) 0%, transparent 60%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero h1 {
+      font-size: clamp(48px, 7.2vw, 84px);
+      font-weight: 600;
+      line-height: 1.04;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      margin: 0 auto 22px;
+      max-width: 980px;
+    }
+
+    .hero-sub {
+      font-size: clamp(19px, 2vw, 23px);
+      font-weight: 400;
+      line-height: 1.42;
+      color: var(--text);
+      max-width: 640px;
+      margin: 0 auto 36px;
+      letter-spacing: -0.012em;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 22px;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-blue {
+      background: var(--blue);
+      color: #fff;
+      padding: 12px 22px;
+      border-radius: var(--r-pill);
+      font-size: 17px;
+      font-weight: 400;
+      text-decoration: none;
+      display: inline-block;
+      transition: background 0.2s, transform 0.15s ease;
+      border: none;
+      cursor: pointer;
+      letter-spacing: -0.012em;
+      font-family: inherit;
+      line-height: 1.2;
+    }
+
+    .btn-blue:hover {
+      background: var(--blue-hover);
+    }
+
+    .btn-blue:active {
+      transform: scale(0.97);
+    }
+
+    .btn-link {
+      color: var(--blue);
+      font-size: 17px;
+      font-weight: 400;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 2px;
+      transition: gap 0.2s;
+      letter-spacing: -0.012em;
+    }
+
+    .btn-link:hover {
+      gap: 6px;
+    }
+
+    .btn-link::after {
+      content: '›';
+      font-size: 20px;
+      margin-top: -2px;
+    }
+
+    /* Hero stat strip */
+    .hero-stats {
+      margin: 80px auto 0;
+      max-width: 980px;
+      padding: 0 22px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .stats-card {
+      background: linear-gradient(180deg, var(--bg-alt) 0%, var(--bg-tint) 100%);
+      border-radius: 24px;
+      padding: 44px 36px;
+      display: grid;
+      grid-template-columns: 1fr 1px 1fr 1px 1fr;
+      gap: 36px;
+      border: 1px solid var(--border-soft);
+      text-align: left;
+    }
+
+    .stat-divider {
+      background: var(--border-soft);
+      width: 1px;
+      height: 100%;
+    }
+
+    .stat-block .stat-label {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 14px;
+    }
+
+    .stat-block .stat-num {
+      font-size: clamp(40px, 5vw, 60px);
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1;
+      letter-spacing: -0.028em;
+      margin-bottom: 12px;
+    }
+
+    .stat-block .stat-num small {
+      font-size: 0.4em;
+      font-weight: 500;
+      color: var(--text-muted);
+      letter-spacing: -0.01em;
+      margin-left: 4px;
+    }
+
+    .stat-block .stat-num .prefix {
+      font-size: 0.4em;
+      font-weight: 500;
+      color: var(--text-muted);
+      letter-spacing: -0.01em;
+      margin-right: 4px;
+    }
+
+    .stat-block .stat-desc {
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--text-muted);
+      line-height: 1.4;
+      letter-spacing: -0.005em;
+    }
+
+    /* ============================================
+       SECTION DEFAULTS
+       ============================================ */
+    section {
+      padding: 120px 22px;
+    }
+
+    .wrap {
+      max-width: 980px;
+      margin: 0 auto;
+    }
+
+    .wrap-wide {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-eyebrow {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--blue);
+      text-align: center;
+      margin-bottom: 10px;
+      letter-spacing: -0.012em;
+    }
+
+    .section-eyebrow.dark {
+      color: var(--blue-bright);
+    }
+
+    h2 {
+      font-size: clamp(36px, 5vw, 56px);
+      font-weight: 600;
+      line-height: 1.07;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      text-align: center;
+      margin-bottom: 18px;
+    }
+
+    h2 .muted {
+      color: var(--text-muted);
+    }
+
+    h2 .accent {
+      color: var(--blue);
+    }
+
+    .section-sub {
+      font-size: clamp(18px, 1.6vw, 21px);
+      font-weight: 400;
+      line-height: 1.45;
+      color: var(--text-muted);
+      text-align: center;
+      max-width: 640px;
+      margin: 0 auto 64px;
+      letter-spacing: -0.012em;
+    }
+
+    /* Icon container — custom SVG, 2px stroke style */
+    .icon-wrap {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, rgba(0, 113, 227, 0.08) 0%, rgba(0, 113, 227, 0.04) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 22px;
+      transition: transform 0.3s ease, background 0.3s ease;
+    }
+
+    .icon-wrap svg {
+      width: 22px;
+      height: 22px;
+      stroke: var(--blue);
+      stroke-width: 1.8;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    /* ============================================
+       PILLARS
+       ============================================ */
+    .pillars-section {
+      background: var(--bg-alt);
+    }
+
+    .pillars {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .pillar {
+      background: var(--bg);
+      border-radius: var(--r-card);
+      padding: 40px 32px;
+      display: flex;
+      flex-direction: column;
+      min-height: 440px;
+      transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.3s ease;
+      box-shadow: var(--shadow-card);
+    }
+
+    .pillar:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .pillar:hover .icon-wrap {
+      transform: scale(1.08);
+      background: linear-gradient(135deg, rgba(0, 113, 227, 0.12) 0%, rgba(0, 113, 227, 0.06) 100%);
+    }
+
+    .pillar-tag {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--blue);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 14px;
+    }
+
+    .pillar h3 {
+      font-size: 28px;
+      font-weight: 600;
+      line-height: 1.1;
+      letter-spacing: -0.018em;
+      color: var(--text);
+      margin-bottom: 14px;
+    }
+
+    .pillar p {
+      font-size: 16px;
+      line-height: 1.5;
+      color: var(--text-muted);
+      letter-spacing: -0.008em;
+      margin-bottom: auto;
+    }
+
+    .pillar-anchor {
+      margin-top: 32px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border-soft);
+    }
+
+    .pillar-anchor .anchor-num {
+      font-size: 42px;
+      font-weight: 600;
+      color: var(--text);
+      letter-spacing: -0.025em;
+      line-height: 1;
+    }
+
+    .pillar-anchor .anchor-num small {
+      font-size: 0.42em;
+      font-weight: 500;
+      color: var(--text-muted);
+      letter-spacing: -0.005em;
+      margin-right: 4px;
+    }
+
+    .pillar-anchor .anchor-desc {
+      display: block;
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--text-muted);
+      letter-spacing: -0.005em;
+      margin-top: 8px;
+    }
+
+    /* ============================================
+       WORKFLOW — fork visualization
+       ============================================ */
+    .workflow-section {
+      background: var(--bg);
+      padding: 130px 22px;
+      overflow: hidden;
+    }
+
+    .workflow {
+      max-width: 1100px;
+      margin: 40px auto 0;
+      position: relative;
+    }
+
+    /* The flow grid: start step, fork (2 paths), merge */
+    .wf-flow {
+      display: grid;
+      grid-template-columns: 1fr 1.6fr 1fr;
+      gap: 24px;
+      align-items: center;
+      position: relative;
+    }
+
+    /* Single column wrapper (start, end) */
+    .wf-col {
+      display: flex;
+      justify-content: center;
+    }
+
+    .wf-step-card {
+      background: var(--bg);
+      border: 1px solid var(--border-soft);
+      border-radius: var(--r-card);
+      padding: 28px 26px;
+      width: 100%;
+      max-width: 280px;
+      position: relative;
+      transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.3s ease;
+      box-shadow: var(--shadow-card);
+    }
+
+    .wf-step-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .wf-step-num {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--blue);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .wf-step-card h3 {
+      font-size: 21px;
+      font-weight: 600;
+      letter-spacing: -0.018em;
+      line-height: 1.2;
+      color: var(--text);
+      margin-bottom: 10px;
+    }
+
+    .wf-step-card p {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.5;
+      letter-spacing: -0.005em;
+    }
+
+    .wf-step-card .step-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, rgba(0, 113, 227, 0.08) 0%, rgba(0, 113, 227, 0.04) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+    }
+
+    .wf-step-card .step-icon svg {
+      width: 18px;
+      height: 18px;
+      stroke: var(--blue);
+      stroke-width: 1.8;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    /* Fork center: two stacked paths */
+    .wf-fork {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      position: relative;
+    }
+
+    .wf-path-label {
+      position: absolute;
+      left: -10px;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
+      top: 50%;
+      transform-origin: center;
+    }
+
+    .wf-path {
+      position: relative;
+      padding-left: 26px;
+    }
+
+    .wf-path::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      width: 4px;
+      height: 80%;
+      transform: translateY(-50%);
+      background: linear-gradient(180deg, transparent 0%, var(--blue) 50%, transparent 100%);
+      border-radius: 2px;
+      opacity: 0.3;
+    }
+
+    .wf-path-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--bg-alt);
+      padding: 6px 14px;
+      border-radius: var(--r-pill);
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .wf-path-tag::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--blue);
+    }
+
+    .wf-path-tag.alt::before {
+      background: var(--green);
+    }
+
+    /* Fork SVG connectors (drawn behind cards) */
+    .wf-connector {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .wf-connector path {
+      fill: none;
+      stroke: var(--border);
+      stroke-width: 1.5;
+      stroke-dasharray: 4 4;
+    }
+
+    .wf-flow > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Mini visuals inside fork cards */
+    .wf-mini {
+      margin-top: 14px;
+      background: var(--bg-alt);
+      border-radius: 10px;
+      padding: 10px 12px;
+      font-size: 11px;
+      color: var(--text);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .wf-mini.alt {
+      background: rgba(52, 199, 89, 0.06);
+    }
+
+    .wf-mini .label {
+      color: var(--text-muted);
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      font-weight: 600;
+    }
+
+    .wf-mini .val {
+      color: var(--text);
+      font-weight: 600;
+      font-size: 12px;
+    }
+
+    .wf-mini.alt .val {
+      color: var(--green);
+    }
+
+    /* ============================================
+       PERSONAS
+       ============================================ */
+    .personas-section {
+      background: var(--bg-alt);
+    }
+
+    .personas-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .persona {
+      background: var(--bg);
+      border-radius: var(--r-card);
+      padding: 32px 28px;
+      transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.3s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .persona:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .persona .quote {
+      font-size: 19px;
+      font-weight: 600;
+      line-height: 1.32;
+      letter-spacing: -0.018em;
+      color: var(--text);
+      margin-bottom: 18px;
+    }
+
+    .persona .quote::before {
+      content: '"';
+      color: var(--blue);
+      margin-right: 1px;
+    }
+
+    .persona .quote::after {
+      content: '"';
+      color: var(--blue);
+      margin-left: 1px;
+    }
+
+    .persona .meta {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 14px;
+    }
+
+    .persona .body {
+      font-size: 15px;
+      line-height: 1.5;
+      color: var(--text-muted);
+      letter-spacing: -0.005em;
+      margin-bottom: 20px;
+    }
+
+    .persona .outcome {
+      margin-top: auto;
+      padding-top: 18px;
+      border-top: 1px solid var(--border-soft);
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text);
+      letter-spacing: -0.005em;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .persona .outcome::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      background: var(--blue);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .persona-bridge {
+      background: var(--bg-dark);
+      color: var(--text-on-dark);
+    }
+
+    .persona-bridge .meta {
+      color: var(--blue-bright);
+    }
+
+    .persona-bridge h3 {
+      font-size: 22px;
+      font-weight: 600;
+      line-height: 1.2;
+      letter-spacing: -0.018em;
+      color: var(--text-on-dark);
+      margin-bottom: 14px;
+    }
+
+    .persona-bridge .body {
+      color: var(--text-on-dark-muted);
+      margin-bottom: 24px;
+    }
+
+    .persona-bridge .bridge-links {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: auto;
+    }
+
+    .persona-bridge .bridge-link {
+      color: var(--blue-bright);
+      font-size: 15px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 2px;
+      transition: gap 0.2s;
+      letter-spacing: -0.012em;
+    }
+
+    .persona-bridge .bridge-link:hover {
+      gap: 6px;
+    }
+
+    .persona-bridge .bridge-link::after {
+      content: '›';
+      font-size: 18px;
+      margin-top: -2px;
+    }
+
+    /* ============================================
+       HOW IT WORKS
+       ============================================ */
+    .how-section {
+      background: var(--bg);
+    }
+
+    .how-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+
+    .how-step {
+      background: var(--bg-alt);
+      border-radius: var(--r-card);
+      padding: 32px 28px;
+      min-height: 240px;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.3s ease, background 0.3s ease;
+    }
+
+    .how-step:hover {
+      transform: translateY(-3px);
+      background: #EDEDF0;
+    }
+
+    .how-num {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--blue);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: auto;
+    }
+
+    .how-step h3 {
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--text);
+      letter-spacing: -0.018em;
+      margin: 32px 0 10px;
+      line-height: 1.2;
+    }
+
+    .how-step p {
+      font-size: 15px;
+      line-height: 1.5;
+      color: var(--text-muted);
+      letter-spacing: -0.005em;
+    }
+
+    /* ============================================
+       PRICING
+       ============================================ */
+    .pricing-section {
+      background: var(--bg-alt);
+    }
+
+    .plans {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .plan {
+      background: var(--bg);
+      border-radius: var(--r-card);
+      padding: 36px 32px;
+      position: relative;
+      transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.3s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .plan:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .plan.featured {
+      background: var(--bg-dark);
+      color: var(--text-on-dark);
+      box-shadow: var(--shadow-deep);
+    }
+
+    .plan.featured:hover {
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.18);
+    }
+
+    .plan-badge {
+      position: absolute;
+      top: -12px;
+      left: 32px;
+      background: var(--blue);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 500;
+      padding: 5px 11px;
+      border-radius: var(--r-pill);
+      letter-spacing: -0.01em;
+    }
+
+    .plan-for {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 10px;
+    }
+
+    .plan.featured .plan-for {
+      color: var(--blue-bright);
+    }
+
+    .plan-name {
+      font-size: 26px;
+      font-weight: 600;
+      letter-spacing: -0.018em;
+      margin-bottom: 28px;
+      color: var(--text);
+    }
+
+    .plan.featured .plan-name {
+      color: var(--text-on-dark);
+    }
+
+    .plan-price-block {
+      margin-bottom: 24px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--border-soft);
+    }
+
+    .plan.featured .plan-price-block {
+      border-bottom-color: var(--border-dark);
+    }
+
+    .plan-day {
+      font-size: 38px;
+      font-weight: 600;
+      letter-spacing: -0.025em;
+      line-height: 1;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+
+    .plan.featured .plan-day {
+      color: var(--text-on-dark);
+    }
+
+    .plan-day small {
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--text-muted);
+      letter-spacing: -0.005em;
+      margin-left: 4px;
+    }
+
+    .plan.featured .plan-day small {
+      color: var(--text-on-dark-muted);
+    }
+
+    .plan-billed {
+      font-size: 13px;
+      color: var(--text-muted);
+      letter-spacing: -0.005em;
+    }
+
+    .plan.featured .plan-billed {
+      color: var(--text-on-dark-muted);
+    }
+
+    .plan-split-tag {
+      display: inline-block;
+      background: rgba(0, 113, 227, 0.08);
+      color: var(--blue);
+      padding: 5px 12px;
+      border-radius: var(--r-pill);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: -0.005em;
+      margin-bottom: 24px;
+    }
+
+    .plan.featured .plan-split-tag {
+      background: rgba(41, 151, 255, 0.16);
+      color: var(--blue-bright);
+    }
+
+    .plan-feats {
+      list-style: none;
+      margin-bottom: 28px;
+      flex-grow: 1;
+    }
+
+    .plan-feats li {
+      font-size: 15px;
+      color: var(--text);
+      padding: 8px 0;
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      letter-spacing: -0.005em;
+    }
+
+    .plan-feats li::before {
+      content: '';
+      width: 14px;
+      height: 14px;
+      flex-shrink: 0;
+      margin-top: 5px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 14' fill='%230071E3'%3E%3Cpath d='M5.5 11L1 6.5l1.5-1.5L5.5 8l6-6L13 3.5z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+    }
+
+    .plan.featured .plan-feats li {
+      color: var(--text-on-dark);
+    }
+
+    .plan.featured .plan-feats li::before {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 14' fill='%232997FF'%3E%3Cpath d='M5.5 11L1 6.5l1.5-1.5L5.5 8l6-6L13 3.5z'/%3E%3C/svg%3E");
+    }
+
+    .plan-btn {
+      display: block;
+      text-align: center;
+      padding: 11px;
+      background: var(--text);
+      color: #fff;
+      border-radius: var(--r-pill);
+      font-size: 15px;
+      font-weight: 400;
+      text-decoration: none;
+      transition: background 0.2s;
+      letter-spacing: -0.005em;
+    }
+
+    .plan-btn:hover {
+      background: #000;
+    }
+
+    .plan.featured .plan-btn {
+      background: var(--blue);
+    }
+
+    .plan.featured .plan-btn:hover {
+      background: var(--blue-hover);
+    }
+
+    .pricing-note {
+      max-width: 640px;
+      margin: 36px auto 0;
+      text-align: center;
+      font-size: 14px;
+      color: var(--text-muted);
+      letter-spacing: -0.005em;
+      line-height: 1.5;
+    }
+
+    /* ============================================
+       COMPARE
+       ============================================ */
+    .compare-section {
+      background: var(--bg);
+    }
+
+    .compare-table {
+      max-width: 1100px;
+      margin: 0 auto;
+      background: var(--bg);
+      border-radius: var(--r-card);
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+
+    .ct-row {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      border-bottom: 1px solid var(--border-soft);
+    }
+
+    .ct-row:last-child {
+      border-bottom: none;
+    }
+
+    .ct-row.head {
+      background: var(--bg-alt);
+    }
+
+    .ct-cell {
+      padding: 18px 22px;
+      font-size: 15px;
+      letter-spacing: -0.005em;
+      border-right: 1px solid var(--border-soft);
+    }
+
+    .ct-cell:last-child {
+      border-right: none;
+    }
+
+    .ct-row.head .ct-cell {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .ct-row.head .ct-cell:first-child {
+      color: var(--text);
+    }
+
+    .ct-feat {
+      font-weight: 500;
+      color: var(--text);
+    }
+
+    .ct-no {
+      color: var(--text-light);
+    }
+
+    .ct-them {
+      color: var(--text);
+      font-weight: 400;
+    }
+
+    .ct-us {
+      color: var(--text);
+      font-weight: 500;
+      background: rgba(0, 113, 227, 0.04);
+    }
+
+    .ct-us::before {
+      content: '';
+      display: inline-block;
+      width: 14px;
+      height: 14px;
+      margin-right: 8px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 14' fill='%230071E3'%3E%3Cpath d='M5.5 11L1 6.5l1.5-1.5L5.5 8l6-6L13 3.5z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: center;
+      vertical-align: -2px;
+    }
+
+    /* ============================================
+       OBJECTIONS
+       ============================================ */
+    .objections-section {
+      background: var(--bg-alt);
+    }
+
+    .objections-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .obj {
+      background: var(--bg);
+      border-radius: var(--r-card);
+      padding: 28px 28px;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .obj:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .obj .q {
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--text);
+      letter-spacing: -0.012em;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      line-height: 1.35;
+    }
+
+    .obj .q::before {
+      content: 'Q';
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--blue);
+      background: rgba(0, 113, 227, 0.1);
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+      letter-spacing: 0;
+    }
+
+    .obj .a {
+      font-size: 15px;
+      color: var(--text-muted);
+      line-height: 1.5;
+      letter-spacing: -0.005em;
+      padding-left: 32px;
+    }
+
+    /* ============================================
+       MANIFESTO
+       ============================================ */
+    .manifesto {
+      background: var(--bg-dark);
+      color: var(--text-on-dark);
+      padding: 160px 22px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .manifesto::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 1000px;
+      height: 1000px;
+      background: radial-gradient(circle, rgba(41, 151, 255, 0.10) 0%, transparent 55%);
+      pointer-events: none;
+    }
+
+    .manifesto-inner {
+      max-width: 820px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    .manifesto h2 {
+      color: var(--text-on-dark);
+      font-size: clamp(40px, 5.5vw, 64px);
+    }
+
+    .manifesto h2 .muted {
+      color: var(--text-on-dark-muted);
+    }
+
+    .manifesto h2 .accent {
+      color: var(--blue-bright);
+    }
+
+    .manifesto-body {
+      margin: 40px auto 48px;
+      max-width: 660px;
+    }
+
+    .manifesto-body p {
+      font-size: 20px;
+      font-weight: 400;
+      color: var(--text-on-dark);
+      line-height: 1.55;
+      margin-bottom: 18px;
+      letter-spacing: -0.012em;
+    }
+
+    .manifesto-body p.lead {
+      font-size: 24px;
+      font-weight: 500;
+      color: var(--text-on-dark);
+      letter-spacing: -0.015em;
+      margin-bottom: 24px;
+    }
+
+    .manifesto-body p .dim {
+      color: var(--text-on-dark-muted);
+    }
+
+    .manifesto .section-eyebrow {
+      color: var(--blue-bright);
+      margin-bottom: 18px;
+    }
+
+    .manifesto-ctas {
+      display: flex;
+      gap: 22px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 28px;
+    }
+
+    .btn-blue-bright {
+      background: var(--blue-bright);
+      color: #fff;
+      padding: 12px 22px;
+      border-radius: var(--r-pill);
+      font-size: 17px;
+      font-weight: 400;
+      text-decoration: none;
+      transition: background 0.2s;
+      letter-spacing: -0.012em;
+    }
+
+    .btn-blue-bright:hover {
+      background: #0090FF;
+    }
+
+    .btn-link-bright {
+      color: var(--blue-bright);
+      font-size: 17px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 2px;
+      transition: gap 0.2s;
+      letter-spacing: -0.012em;
+    }
+
+    .btn-link-bright:hover {
+      gap: 6px;
+    }
+
+    .btn-link-bright::after {
+      content: '›';
+      font-size: 20px;
+      margin-top: -2px;
+    }
+
+    /* ============================================
+       WAITLIST
+       ============================================ */
+    .waitlist {
+      background: var(--bg);
+      padding: 120px 22px;
+    }
+
+    .wl-inner {
+      max-width: 560px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .wl-form {
+      display: flex;
+      gap: 8px;
+      margin-top: 32px;
+    }
+
+    .wl-form input {
+      flex: 1;
+      border: 1px solid var(--border);
+      background: var(--bg-alt);
+      padding: 14px 18px;
+      font-family: inherit;
+      font-size: 17px;
+      color: var(--text);
+      border-radius: var(--r-pill);
+      outline: none;
+      transition: border-color 0.2s, background 0.2s;
+      letter-spacing: -0.012em;
+    }
+
+    .wl-form input::placeholder {
+      color: var(--text-light);
+    }
+
+    .wl-form input:focus {
+      border-color: var(--blue);
+      background: #fff;
+    }
+
+    .wl-form button {
+      background: var(--blue);
+      color: #fff;
+      border: none;
+      padding: 14px 28px;
+      border-radius: var(--r-pill);
+      font-family: inherit;
+      font-size: 17px;
+      font-weight: 400;
+      cursor: pointer;
+      transition: background 0.2s;
+      letter-spacing: -0.012em;
+      white-space: nowrap;
+    }
+
+    .wl-form button:hover {
+      background: var(--blue-hover);
+    }
+
+    .wl-note {
+      margin-top: 16px;
+      font-size: 13px;
+      color: var(--text-muted);
+      letter-spacing: -0.005em;
+    }
+
+    /* ============================================
+       FOOTER
+       ============================================ */
+    footer {
+      background: var(--bg-alt);
+      padding: 32px 22px;
+      border-top: 1px solid var(--border);
+    }
+
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .f-logo {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: -0.012em;
+    }
+
+    .f-logo span {
+      font-weight: 400;
+      color: var(--text-muted);
+    }
+
+    .f-links {
+      display: flex;
+      gap: 24px;
+      list-style: none;
+    }
+
+    .f-links a {
+      font-size: 13px;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.2s;
+      letter-spacing: -0.005em;
+    }
+
+    .f-links a:hover {
+      color: var(--text);
+    }
+
+    .f-copy {
+      font-size: 12px;
+      color: var(--text-light);
+      letter-spacing: -0.005em;
+    }
+
+    /* ============================================
+       SCROLL REVEAL
+       ============================================ */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .reveal.in {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-delay-1 { transition-delay: 0.08s; }
+    .reveal-delay-2 { transition-delay: 0.16s; }
+    .reveal-delay-3 { transition-delay: 0.24s; }
+    .reveal-delay-4 { transition-delay: 0.32s; }
+    .reveal-delay-5 { transition-delay: 0.40s; }
+    .reveal-delay-6 { transition-delay: 0.48s; }
+
+    /* ============================================
+       HERO INTRO ANIMATION
+       ============================================ */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-inner > * {
+      animation: fadeUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+    }
+
+    .hero h1 { animation-delay: 0.05s; }
+    .hero-sub { animation-delay: 0.18s; }
+    .hero-ctas { animation-delay: 0.32s; }
+
+    .hero-stats {
+      animation: fadeUp 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+      animation-delay: 0.5s;
+    }
+
+    /* ============================================
+       RESPONSIVE
+       ============================================ */
+    @media (max-width: 1024px) {
+      .stats-card {
+        grid-template-columns: 1fr;
+        gap: 28px;
+        padding: 36px 28px;
+      }
+
+      .stat-divider {
+        width: 100%;
+        height: 1px;
+      }
+
+      .wf-flow {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+
+      .wf-col {
+        justify-content: stretch;
+      }
+
+      .wf-step-card {
+        max-width: 100%;
+      }
+    }
+
+    @media (max-width: 900px) {
+      nav { padding: 0 16px; }
+      .nav-links { gap: 14px; }
+      .nav-links a { font-size: 12px; }
+      .hero { padding: 110px 16px 60px; }
+      section { padding: 80px 16px; }
+      .workflow-section,
+      .manifesto,
+      .waitlist { padding: 90px 16px; }
+      .pillars,
+      .personas-grid,
+      .how-steps,
+      .plans,
+      .objections-grid {
+        grid-template-columns: 1fr;
+      }
+      .ct-row { grid-template-columns: 1fr; }
+      .ct-cell {
+        border-right: none;
+        border-bottom: 1px solid var(--border-soft);
+        padding: 14px 18px;
+      }
+      .ct-cell:last-child { border-bottom: none; }
+      .wl-form { flex-direction: column; }
+      .wl-form button { width: 100%; }
+      .footer-inner { flex-direction: column; text-align: center; }
+      .pillar { min-height: auto; }
+    }
+
+    @media (max-width: 600px) {
+      .nav-links li:not(:last-child) { display: none; }
+    }
+
+    /* Honor reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="iclose-apple-index.html" class="logo">i<span>Close</span></a>
+    <ul class="nav-links">
+      <li><a href="iclose-apple-index.html" class="active">For Closers</a></li>
+      <li><a href="iclose-apple-area-experts.html">For Area Experts</a></li>
+      <li><a href="iclose-apple-developers.html">For Developers</a></li>
+      <li><a href="#waitlist" class="nav-cta">Join waitlist</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO — copy locked from user image -->
+  <section class="hero">
+    <div class="hero-inner">
+      <h1>Learn From The Best,<br>Close More Deals!</h1>
+      <p class="hero-sub">Get the training and support you need to close UAE real estate deals. Learn from the top 0.1%
+        of UAE agents and keep up to 100% of your commission.</p>
+      <div class="hero-ctas">
+        <a href="#waitlist" class="btn-blue">Join waitlist</a>
+        <a href="#workflow" class="btn-link">See how it works</a>
+      </div>
+    </div>
+    <div class="hero-stats">
+      <div class="stats-card">
+        <div class="stat-block">
+          <div class="stat-label">Your ceiling</div>
+          <div class="stat-num"><span class="prefix">upto</span><span data-count="100">0</span><small>%</small></div>
+          <div class="stat-desc">Keep the maximum commission on deals you close yourself.</div>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-block">
+          <div class="stat-label">Your library</div>
+          <div class="stat-num">A — Z</div>
+          <div class="stat-desc">Every community, tower, and cluster — taught by the people closing there.</div>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-block">
+          <div class="stat-label">Your daily cost</div>
+          <div class="stat-num">AED <span data-count="3">0</span><small>/day</small></div>
+          <div class="stat-desc">Entry plan. Less than a cup of karak. Billed yearly.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PILLARS -->
+  <section class="pillars-section">
+    <div class="wrap-wide">
+      <div class="section-eyebrow reveal">What iClose does</div>
+      <h2 class="reveal reveal-delay-1">Built for closers.<br><span class="muted">Powered by experts.</span></h2>
+      <p class="section-sub reveal reveal-delay-2">Three things every UAE closer needs. One platform that delivers all
+        three.</p>
+      <div class="pillars">
+        <div class="pillar reveal reveal-delay-1">
+          <div class="icon-wrap">
+            <!-- Learn: book + lightbulb -->
+            <svg viewBox="0 0 24 24">
+              <path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v18H6.5A2.5 2.5 0 0 1 4 17.5z" />
+              <path d="M4 17.5A2.5 2.5 0 0 0 6.5 20H20" />
+              <path d="M9 7h7M9 11h5" />
+            </svg>
+          </div>
+          <div class="pillar-tag">Learn</div>
+          <h3>Learn any UAE community,<br>top to bottom.</h3>
+          <p>Sessions, playbooks, and deal breakdowns for every community, tower, and cluster — built by the experts
+            actually closing there. From basics to deep specialization.</p>
+          <div class="pillar-anchor">
+            <div class="anchor-num">A — Z</div>
+            <span class="anchor-desc">Every community. Every floor plan.</span>
+          </div>
+        </div>
+
+        <div class="pillar reveal reveal-delay-2">
+          <div class="icon-wrap">
+            <!-- Earn: dollar arrow up -->
+            <svg viewBox="0 0 24 24">
+              <path d="M3 17l6-6 4 4 8-8" />
+              <path d="M14 7h7v7" />
+            </svg>
+          </div>
+          <div class="pillar-tag">Earn</div>
+          <h3>Keep more<br>of every deal.</h3>
+          <p>When you close, you keep up to 100%. Refer a client and earn from the deal. Submit an inquiry and get paid
+            when an iClose-equipped expert helps close it alongside you.</p>
+          <div class="pillar-anchor">
+            <div class="anchor-num"><small>upto</small>100%</div>
+            <span class="anchor-desc">On your self-closed deals.</span>
+          </div>
+        </div>
+
+        <div class="pillar reveal reveal-delay-3">
+          <div class="icon-wrap">
+            <!-- Lead: badge / star -->
+            <svg viewBox="0 0 24 24">
+              <circle cx="12" cy="9" r="6" />
+              <path d="M9 14l-2 8 5-3 5 3-2-8" />
+            </svg>
+          </div>
+          <div class="pillar-tag">Lead</div>
+          <h3>Become the name<br>people call first.</h3>
+          <p>Authority compounds. The more you learn a niche, the more inbound finds you. Stop being a generalist. Start
+            being the answer in your community.</p>
+          <div class="pillar-anchor">
+            <div class="anchor-num">One</div>
+            <span class="anchor-desc">The closer people remember.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORKFLOW — fork visualization -->
+  <section class="workflow-section" id="workflow">
+    <div class="wrap-wide">
+      <div class="section-eyebrow reveal">How it works in practice</div>
+      <h2 class="reveal reveal-delay-1">One platform.<br><span class="muted">Two paths to a closed deal.</span></h2>
+      <p class="section-sub reveal reveal-delay-2">Whether you close it yourself or work alongside an iClose-equipped
+        expert — every path ends with you getting paid.</p>
+
+      <div class="workflow">
+        <div class="wf-flow">
+
+          <!-- START -->
+          <div class="wf-col">
+            <div class="wf-step-card reveal reveal-delay-1">
+              <div class="step-icon">
+                <!-- Book / learn icon -->
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                  stroke-linejoin="round" style="stroke: #0071E3;">
+                  <path d="M4 5a2 2 0 0 1 2-2h14v18H6a2 2 0 0 1-2-2z" />
+                  <path d="M4 17a2 2 0 0 1 2-2h14" />
+                </svg>
+              </div>
+              <div class="wf-step-num">Step 1</div>
+              <h3>Learn the market.</h3>
+              <p>Master any UAE community through expert-led sessions, playbooks, and deal breakdowns.</p>
+            </div>
+          </div>
+
+          <!-- FORK CENTER -->
+          <div class="wf-fork">
+
+            <!-- Top path: broker -->
+            <div class="wf-step-card reveal reveal-delay-2">
+              <span class="wf-path-tag">Broker route</span>
+              <div class="wf-step-num">Step 2 · A</div>
+              <h3>Close it yourself.</h3>
+              <p>Use the platform's network, listings, and tools to close the deal under your own name. Keep up to 100%.
+              </p>
+              <div class="wf-mini">
+                <span class="label">Your split</span>
+                <span class="val">Up to 100%</span>
+              </div>
+            </div>
+
+            <!-- Bottom path: non-broker -->
+            <div class="wf-step-card reveal reveal-delay-3">
+              <span class="wf-path-tag alt">Referral route</span>
+              <div class="wf-step-num">Step 2 · B</div>
+              <h3>Post an inquiry. Close with an expert.</h3>
+              <p>Got a client but not a broker? Submit the inquiry. We match you with the right expert who closes
+                alongside you.</p>
+              <div class="wf-mini alt">
+                <span class="label">You earn</span>
+                <span class="val">Referral fee</span>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- END -->
+          <div class="wf-col">
+            <div class="wf-step-card reveal reveal-delay-4">
+              <div class="step-icon">
+                <svg viewBox="0 0 24 24">
+                  <path d="M3 12l6 6L21 6" />
+                </svg>
+              </div>
+              <div class="wf-step-num">Step 3</div>
+              <h3>Get paid.</h3>
+              <p>Commission lands directly. Tier, split, and timeline — all transparent from day one.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PERSONAS -->
+  <section class="personas-section">
+    <div class="wrap-wide">
+      <div class="section-eyebrow reveal">Who it's for</div>
+      <h2 class="reveal reveal-delay-1">Five sentences.<br><span class="muted">Find the one that's yours.</span></h2>
+      <p class="section-sub reveal reveal-delay-2">If any of these read like something you've said out loud — iClose was
+        built with you in mind.</p>
+      <div class="personas-grid">
+
+        <div class="persona reveal reveal-delay-1">
+          <div class="meta">Brokers · 1–5 yrs</div>
+          <div class="quote">I'm tired of being a generalist competing with everyone.</div>
+          <div class="body">You want to dominate one community but keep losing to brokers with deeper area knowledge.
+            iClose gives you the structured path to become that name.</div>
+          <div class="outcome">Learn one niche. Own it.</div>
+        </div>
+
+        <div class="persona reveal reveal-delay-2">
+          <div class="meta">Active broker</div>
+          <div class="quote">I'm doing the work but someone else is converting it.</div>
+          <div class="body">You generate the leads. Someone with more authority closes them. iClose backs your hustle
+            with the insider context that actually converts.</div>
+          <div class="outcome">Same leads. Better close rate.</div>
+        </div>
+
+        <div class="persona reveal reveal-delay-3">
+          <div class="meta">Lawyer · Advisor · CA</div>
+          <div class="quote">I can't risk my reputation on a random broker.</div>
+          <div class="body">Your clients ask about UAE property. You can't introduce them to just anyone. iClose matches
+            you with verified specialists — and pays you for the referral.</div>
+          <div class="outcome">Refer once. Earn well.</div>
+        </div>
+
+        <div class="persona reveal reveal-delay-4">
+          <div class="meta">Networker · Executive</div>
+          <div class="quote">I should be earning from conversations I'm already having.</div>
+          <div class="body">Your network constantly asks who to call for property. Now you have a real answer — and a
+            real commission when they close.</div>
+          <div class="outcome">Conversations become income.</div>
+        </div>
+
+        <div class="persona reveal reveal-delay-5">
+          <div class="meta">Performance broker</div>
+          <div class="quote">I deserve to earn what I actually generate.</div>
+          <div class="body">Done with 50/50 splits regardless of where the lead came from. iClose rewards performance —
+            up to 100% on your closed deals.</div>
+          <div class="outcome">Earn what you deserve.</div>
+        </div>
+
+        <div class="persona persona-bridge reveal reveal-delay-6">
+          <div class="meta">Area Experts & Developers</div>
+          <h3>Already the expert<br>everyone calls?</h3>
+          <p class="body">If you're an area expert or a developer relationship manager, iClose has dedicated platforms
+            for you. Authority, production, and inbound deal flow.</p>
+          <div class="bridge-links">
+            <a href="iclose-apple-area-experts.html" class="bridge-link">iClose for Area Experts</a>
+            <a href="iclose-apple-developers.html" class="bridge-link">iClose for Developers</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="how-section">
+    <div class="wrap-wide">
+      <div class="section-eyebrow reveal">Getting started</div>
+      <h2 class="reveal reveal-delay-1">From sign-up to specialist.<br><span class="muted">In four steps.</span></h2>
+      <p class="section-sub reveal reveal-delay-2">No bloated onboarding. No mystery. A clear path from day one.</p>
+      <div class="how-steps">
+        <div class="how-step reveal reveal-delay-1">
+          <div class="how-num">01</div>
+          <h3>Pick your tier.</h3>
+          <p>Explorer for learners and referrers. Operator for active brokers. Entrepreneur for elite performers.</p>
+        </div>
+        <div class="how-step reveal reveal-delay-2">
+          <div class="how-num">02</div>
+          <h3>Pick your market.</h3>
+          <p>Choose a community. Go through everything iClose has on it. By the end, you've mastered it.</p>
+        </div>
+        <div class="how-step reveal reveal-delay-3">
+          <div class="how-num">03</div>
+          <h3>Refer or close.</h3>
+          <p>Close deals yourself. Post inquiries when you need an expert. Earn at every step.</p>
+        </div>
+        <div class="how-step reveal reveal-delay-4">
+          <div class="how-num">04</div>
+          <h3>Compound the authority.</h3>
+          <p>Over time, you become the closer everyone calls in your market. Inbound starts finding you.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="pricing-section" id="pricing">
+    <div class="wrap-wide">
+      <div class="section-eyebrow reveal">Plans</div>
+      <h2 class="reveal reveal-delay-1">Pick your tier.<br><span class="muted">Pay for what you use.</span></h2>
+      <p class="section-sub reveal reveal-delay-2">A ladder, not a ceiling. Start where you are. Scale into what you
+        want to become.</p>
+      <div class="plans">
+
+        <div class="plan reveal reveal-delay-1">
+          <div class="plan-for">Learner · Referrer</div>
+          <div class="plan-name">Explorer</div>
+          <div class="plan-price-block">
+            <div class="plan-day">AED 3<small>/day</small></div>
+            <div class="plan-billed">Billed annually · AED 1,200/year</div>
+          </div>
+          <div class="plan-split-tag">80/20 split on referred deals</div>
+          <ul class="plan-feats">
+            <li>Learn any community in depth</li>
+            <li>Get matched to the right expert</li>
+            <li>Turn referrals into income</li>
+            <li>Cashback when you buy yourself</li>
+          </ul>
+          <a href="#waitlist" class="plan-btn">Get started</a>
+        </div>
+
+        <div class="plan featured reveal reveal-delay-2">
+          <div class="plan-badge">Most popular</div>
+          <div class="plan-for">Active broker</div>
+          <div class="plan-name">Operator</div>
+          <div class="plan-price-block">
+            <div class="plan-day">AED 110<small>/day</small></div>
+            <div class="plan-billed">Billed annually · AED 40,000/year</div>
+          </div>
+          <div class="plan-split-tag">90/10 split on your closed deals</div>
+          <ul class="plan-feats">
+            <li>Everything in Explorer</li>
+            <li>Visa + labor card included</li>
+            <li>Listings & inventory access</li>
+            <li>Co-broking network</li>
+            <li>Deal collaboration tools</li>
+            <li>Dedicated support</li>
+          </ul>
+          <a href="#waitlist" class="plan-btn">Join waitlist</a>
+        </div>
+
+        <div class="plan reveal reveal-delay-3">
+          <div class="plan-for">Elite performer</div>
+          <div class="plan-name">Entrepreneur</div>
+          <div class="plan-price-block">
+            <div class="plan-day">AED 274<small>/day</small></div>
+            <div class="plan-billed">Billed annually · AED 100,000/year</div>
+          </div>
+          <div class="plan-split-tag">100% commission · keep it all</div>
+          <ul class="plan-feats">
+            <li>Everything in Operator</li>
+            <li>Dedicated account manager</li>
+            <li>Finance & invoicing handled</li>
+            <li>Admin & compliance handled</li>
+            <li>Scale like a business owner</li>
+            <li>No internal team required</li>
+          </ul>
+          <a href="#waitlist" class="plan-btn">Get in touch</a>
+        </div>
+
+      </div>
+      <p class="pricing-note reveal">For context: comparable platforms charge AED 4,788–8,000+ a year just for entry.
+        iClose starts at AED 3 a day.</p>
+    </div>
+  </section>
+
+  <!-- COMPARE -->
+  <section class="compare-section">
+    <div class="wrap-wide">
+      <div class="section-eyebrow reveal">Why iClose</div>
+      <h2 class="reveal reveal-delay-1">The market has options.<br><span class="muted">None of them do this.</span></h2>
+      <p class="section-sub reveal reveal-delay-2">Other platforms sell you a desk, an inbox, or a split. iClose gives
+        you the training, the network, and the economics — under one roof.</p>
+      <div class="compare-table reveal reveal-delay-3">
+        <div class="ct-row head">
+          <div class="ct-cell">Feature</div>
+          <div class="ct-cell">Frank AI</div>
+          <div class="ct-cell">Core Realty</div>
+          <div class="ct-cell">iClose</div>
+        </div>
+        <div class="ct-row">
+          <div class="ct-cell ct-feat">Hyperlocal education</div>
+          <div class="ct-cell ct-no">None</div>
+          <div class="ct-cell ct-no">None</div>
+          <div class="ct-cell ct-us">Area, building, cluster level</div>
+        </div>
+        <div class="ct-row">
+          <div class="ct-cell ct-feat">Entry cost</div>
+          <div class="ct-cell ct-them">AED 399/mo</div>
+          <div class="ct-cell ct-them">AED 8,000 + AED 990/mo</div>
+          <div class="ct-cell ct-us">AED 3/day · billed annually</div>
+        </div>
+        <div class="ct-row">
+          <div class="ct-cell ct-feat">Referral income</div>
+          <div class="ct-cell ct-no">Brokers only</div>
+          <div class="ct-cell ct-no">Brokers only</div>
+          <div class="ct-cell ct-us">Open to everyone</div>
+        </div>
+        <div class="ct-row">
+          <div class="ct-cell ct-feat">Non-broker professionals</div>
+          <div class="ct-cell ct-no">Agents only</div>
+          <div class="ct-cell ct-no">Agents only</div>
+          <div class="ct-cell ct-us">Lawyers, advisors, networkers</div>
+        </div>
+        <div class="ct-row">
+          <div class="ct-cell ct-feat">Full back-office</div>
+          <div class="ct-cell ct-them">Partial</div>
+          <div class="ct-cell ct-them">Partial</div>
+          <div class="ct-cell ct-us">Visa, invoicing, compliance</div>
+        </div>
+        <div class="ct-row">
+          <div class="ct-cell ct-feat">Commission ceiling</div>
+          <div class="ct-cell ct-them">Standard splits</div>
+          <div class="ct-cell ct-them">Up to 80%</div>
+          <div class="ct-cell ct-us">Up to 100%</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OBJECTIONS -->
+  <section class="objections-section">
+    <div class="wrap-wide">
+      <div class="section-eyebrow reveal">Honest answers</div>
+      <h2 class="reveal reveal-delay-1">The questions you'd<br><span class="muted">actually want to ask.</span></h2>
+      <p class="section-sub reveal reveal-delay-2">No marketing fluff. Just the things every reasonable person wonders
+        before joining something pre-launch.</p>
+      <div class="objections-grid">
+
+        <div class="obj reveal reveal-delay-1">
+          <div class="q">Why should I trust a pre-launch platform?</div>
+          <p class="a">Fair question. Joining the waitlist costs nothing and commits to nothing. Founding-member pricing
+            is locked in only when we open — and you can walk away if it doesn't deliver.</p>
+        </div>
+
+        <div class="obj reveal reveal-delay-2">
+          <div class="q">How is "up to 100%" actually possible?</div>
+          <p class="a">iClose isn't a traditional agency taking a cut. Higher plans charge a flat membership instead of
+            a commission split. The platform earns through subscriptions, not your closed deals.</p>
+        </div>
+
+        <div class="obj reveal reveal-delay-3">
+          <div class="q">I'm not a broker. Can I still earn?</div>
+          <p class="a">Yes. Lawyers, wealth managers, executives, and well-networked individuals can post an inquiry,
+            get matched with the right expert, and earn a referral commission — no license needed.</p>
+        </div>
+
+        <div class="obj reveal reveal-delay-4">
+          <div class="q">What if my area isn't covered yet?</div>
+          <p class="a">We launch with the UAE's major communities and add coverage continuously. If your area isn't
+            there at launch, tell us — we prioritize based on demand.</p>
+        </div>
+
+        <div class="obj reveal reveal-delay-5">
+          <div class="q">Do I need to leave my current agency?</div>
+          <p class="a">Not for the Explorer tier — it works alongside your existing role. Operator and Entrepreneur
+            tiers include visa and full back-office, designed for closers going independent.</p>
+        </div>
+
+        <div class="obj reveal reveal-delay-6">
+          <div class="q">What happens to my data if I cancel?</div>
+          <p class="a">You keep your learning history, referral records, and earnings. We don't lock anyone in. Annual
+            billing means you've already paid for the year — use it through the period.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- MANIFESTO -->
+  <section class="manifesto">
+    <div class="manifesto-inner">
+      <div class="section-eyebrow dark reveal">The iClose philosophy</div>
+      <h2 class="reveal reveal-delay-1">Real estate education<br>has been broken for too long.<br><span class="accent">iClose
+          fixes it.</span></h2>
+      <div class="manifesto-body">
+        <p class="lead reveal reveal-delay-2">Every closer in the UAE starts the same way. Thrown at leads. Asked to
+          sell what they don't fully understand. Paid less than they earn.</p>
+        <p class="reveal reveal-delay-3">The market trained an entire generation to chase volume. Cold-call harder.
+          Quote more developments. Beat the next guy to the WhatsApp reply.<br><span class="dim">It rewarded
+            noise over knowledge.</span></p>
+        <p class="reveal reveal-delay-4">iClose was built on the opposite belief. That the best closers aren't the
+          loudest — they know their market cold, get matched to the right opportunity, and keep more of what they earn.
+          <br><span class="dim">That's not a brokerage. That's an education platform with real economic
+            consequences.</span></p>
+      </div>
+      <div class="manifesto-ctas reveal reveal-delay-5">
+        <a href="#waitlist" class="btn-blue-bright">Join the waitlist</a>
+        <a href="iclose-apple-area-experts.html" class="btn-link-bright">For Area Experts</a>
+        <a href="iclose-apple-developers.html" class="btn-link-bright">For Developers</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- WAITLIST -->
+  <section class="waitlist" id="waitlist">
+    <div class="wl-inner">
+      <div class="section-eyebrow reveal">Early access</div>
+      <h2 class="reveal reveal-delay-1">Be one of the first.</h2>
+      <p class="section-sub reveal reveal-delay-2" style="margin-bottom:0;">iClose opens soon. Get on the waitlist for
+        early access and founding-member pricing.</p>
+      <div class="wl-form reveal reveal-delay-3">
+        <input type="email" placeholder="Your email address">
+        <button type="button">Join waitlist</button>
+      </div>
+      <p class="wl-note reveal reveal-delay-4">No spam. Just an update when we're ready for you.</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <a href="iclose-apple-index.html" class="f-logo">i<span>Close</span></a>
+      <ul class="f-links">
+        <li><a href="iclose-apple-index.html">For Closers</a></li>
+        <li><a href="iclose-apple-area-experts.html">For Area Experts</a></li>
+        <li><a href="iclose-apple-developers.html">For Developers</a></li>
+        <li><a href="#waitlist">Waitlist</a></li>
+      </ul>
+      <p class="f-copy">© 2025 iClose. UAE.</p>
+    </div>
+  </footer>
+
+  <script>
+    // ============================================
+    // SCROLL REVEAL — IntersectionObserver
+    // ============================================
+    (function () {
+      const reveals = document.querySelectorAll('.reveal');
+      if (!('IntersectionObserver' in window)) {
+        reveals.forEach(el => el.classList.add('in'));
+        return;
+      }
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+      reveals.forEach(el => observer.observe(el));
+    })();
+
+    // ============================================
+    // COUNT-UP — number stats animate on viewport entry
+    // ============================================
+    (function () {
+      const targets = document.querySelectorAll('[data-count]');
+      if (!('IntersectionObserver' in window)) {
+        targets.forEach(el => el.textContent = el.dataset.count);
+        return;
+      }
+
+      const ease = (t) => 1 - Math.pow(1 - t, 3);
+
+      function animateCount(el) {
+        const end = parseInt(el.dataset.count, 10);
+        const duration = 1400;
+        const start = performance.now();
+
+        function frame(now) {
+          const elapsed = now - start;
+          const progress = Math.min(elapsed / duration, 1);
+          const value = Math.floor(ease(progress) * end);
+          el.textContent = value;
+          if (progress < 1) requestAnimationFrame(frame);
+          else el.textContent = end;
+        }
+        requestAnimationFrame(frame);
+      }
+
+      const obs = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            animateCount(entry.target);
+            obs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.4 });
+
+      targets.forEach(t => obs.observe(t));
+    })();
+  </script>
+
+</body>
+
+</html>
